@@ -12,8 +12,8 @@
 </object>
 
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Final.ipynb" type="application/ipynb" width="700px" height="700px">
-    <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Final.ipyn">
-        <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Final.ipyn">Download PDF</a>.</p>
+    <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Final.ipynb">
+        <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Final.ipynb">Download PDF</a>.</p>
     </embed>
 </object>
 
