@@ -1,1 +1,1 @@
-[![Header](https://raw.githubusercontent.com/MuizM/<OWNER>/<OWNER>/readme_header.png "Header")](https://some-url.dev/)
+<img src="https://raw.githubusercontent.com/<MuizM>/<MuizM>/master/<Muiz Murad.gif>.gif" width="30px">
