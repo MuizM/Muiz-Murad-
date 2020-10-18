@@ -9,6 +9,7 @@
 <summary>Multi Layer Perceptron Model (Python)</summary>
 Predicting which category newsgroup text belongs to.
   
+  
 <object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">View Report</a>.</p>
@@ -25,6 +26,7 @@ Predicting which category newsgroup text belongs to.
 <details>
 <summary>Convolutional Neural Network (Python)</summary>
 To predict which of 10 categories an image belongs to, the data is the classic CIFAR-10 dataset. 
+  
   
 <object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Two.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Two.pdf">
@@ -43,6 +45,7 @@ To predict which of 10 categories an image belongs to, the data is the classic C
 <summary>Recurrent Neural Network (Python)</summary>
 1. Conduct a literature review of at least 10 academic articles focusing on the use of RNNs in stock price prediction (use google scholar, and focus on the last 5 years)
 2. Build an RNN focused only on using past prices to predict future prices
+
 
 <object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Three.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Three.pdf">
