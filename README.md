@@ -6,8 +6,14 @@
 <summary>Multi Layer Perceptron Model</summary>
 
 <object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="http://yoursite.com/the.pdf">
+    <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
+
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Final.ipynb" type="application/ipynb" width="700px" height="700px">
+    <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Final.ipyn">
+        <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Final.ipyn">Download PDF</a>.</p>
     </embed>
 </object>
 
