@@ -128,7 +128,8 @@
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">View Report</a>.</p>
     </embed>
 </object>
-
+</details>
+                                                                                                     
 **Tableau**
 
 <details>
