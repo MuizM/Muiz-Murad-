@@ -1,0 +1,557 @@
+---
+title: "Group Project"
+author: "Team Regression and Beyond"
+date: "11/07/2020"
+output: pdf_document
+---
+
+```{r setup}
+set.seed(1)
+require(leaps)
+require(glmnet)
+require(pls)
+require(plotmo)
+require(dplyr)
+require(asbio)
+require(FactoMineR)
+require(ggplot2)
+require(pROC)
+require(e1071)
+require(kableExtra)
+require(plotly)
+require(corrplot)
+require(corrgram)
+require(randomForest)
+library(mgcv)
+library(earth)
+library(rpart)
+library(tree)
+```
+
+```{r}
+data<-read.csv("C://Users//ricky//OneDrive - Bond University//Uni//Stats Learning//StatsAssignmentData.csv")
+str(data)
+```
+
+
+```{r cleaning}
+data <- select(data,-c(1, 2))
+str(data)
+
+
+TransformVariable <- function(DataFrame, columns, levelvector, typevariable){
+  if(typevariable=='factor') {
+  for (i in columns){
+    DataFrame[,i] <- as.factor(DataFrame[,i])
+  }
+  return(DataFrame)
+}
+else if(typevariable=='numeric') {
+  for (i in columns){
+    DataFrame[,i] <- as.numeric(DataFrame[,i])
+  }
+  return(DataFrame)
+  }
+  else if(typevariable=='ordered') {
+  for (i in columns){
+    DataFrame[,i] <- factor(DataFrame[,i], levels = levelvector)
+  }
+  return(DataFrame)
+}
+}
+
+cleaneddata<-TransformVariable(data, c("Adult.Mortality", "infant.deaths", "Alcohol", "Hepatitis.B", "Measles", "under.five.deaths", "Polio", "Total.expenditure", "Diphtheria", "HIV.AIDS", "GDP", "Population", "thinness..1.19.years", "thinness.5.9.years", "Income.composition.of.resources", "Schooling"),typevariable='numeric')
+
+
+```
+
+```{r naomit}
+
+
+vars<-colnames(cleaneddata)
+nacols<-0
+for (i in vars){
+  nacols[i] = sum(is.na(cleaneddata[,i]))
+}
+nacols  
+
+narows = data[,1]
+narows<- data.frame(narows)
+rows = 1:184
+for (i in rows) {
+  narows[i,2] = sum(is.na(cleaneddata[i,]))
+}
+colnames(narows) <- c("Country", "NAtest")
+
+narows$Country<-narows[order(-narows$NAtest),1]
+narows$NAtest<-narows[order(-narows$NAtest),2]
+narows
+
+#all of the NAs in 24/184 of the countries.
+#all of the NAs in 10/18 of the variables
+#probably makes more sense to just get rid of the 24 countries
+
+```
+
+
+```{r}
+nrow(cleaneddata)
+lifedata<-na.omit(cleaneddata)
+nrow(lifedata)
+str(lifedata)
+```
+
+```{r split}
+#Do not have lots of data, so will use metrics that mimic external metrics instead (e.g. BIC and AIC)
+```
+
+```{r pca}
+
+res.pca = PCA(lifedata, scale = TRUE, graph=FALSE)
+plot(res.pca$eig[, "cumulative percentage of variance"], main="Cumulative Variance vs. No. Components")
+plot(res.pca$eig[, "eigenvalue"], main="Eigenvalue vs. No. Components")
+```
+
+
+According to the Kaiser rule, we need to select all the dimensions that have an Eigenvalue > 1. This means that the first 8 components are okay choices. The culmulative variance graph also suggests that the optimal number of components is greater than 10. This means that PCA has not meaningfully decreased the number of variables for the analysis.
+
+
+```{r pls}
+
+pls.fit <- plsr(Life.expectancy~.,data=lifedata,scale=TRUE,validation ="CV")
+validationplot(pls.fit,estimate="CV",type="b",intercept=F)
+```
+This is a little more resonable, and suggests that we need 5 components to addequately capture the variance in the dataset. Lets created a basic model with these 5 components.
+
+```{r}
+newpls <- plsr(Life.expectancy~.,data=lifedata,scale=TRUE, ncomp=5)
+lifedatacomponents<-as.data.frame((as.matrix.data.frame(newpls$scores)))
+lifedatacomponents["Life.expectancy"]=lifedata$Life.expectancy
+str(lifedatacomponents)
+pcafit=lm(Life.expectancy~., data=lifedatacomponents)
+```
+
+
+
+```{r}
+rfdata<-randomForest(lifedata$Life.expectancy~.*., data=lifedata, ntree= 300)
+summary(rfdata)
+plot(rfdata)
+varImpPlot(rfdata)
+#From random forest, it can be seen that income.comp, adult.mortality, schooling, HIV.AIDS and GDP would be significantly important variables for life expectancy.
+```
+
+
+```{r}
+#Variable selection through building a tree with tree function
+tree <- tree(Life.expectancy~., data = lifedata)
+summary(tree)
+plot(tree)
+text(tree, pretty = 0)
+```
+
+
+```{r}
+#Cross validation with tree
+cv_tree <- cv.tree(tree)
+plot(cv_tree$size,cv_tree$dev,type='b')
+
+prune_tree <- prune.tree(tree ,best=4)
+plot(prune_tree)
+text(prune_tree , pretty =0)
+summary(prune_tree)
+```
+
+Next we will create a regular linear model through stepwise variable selection
+
+```{r backward stepwise}
+xvars<-ncol(lifedata)-1
+bestsubsets<-regsubsets(Life.expectancy~.*., data=lifedata, nvmax=xvars, method="backward") #interactions
+regsummary <- summary(bestsubsets)
+comp<-data.frame(1:16,regsummary$adjr2, regsummary$cp, regsummary$bic)
+colnames(comp) <- c("Variable Count", "Adjusted R2", "CP", "BIC")
+comp
+
+min<-which.min(regsummary$cp)
+coefs<-data.frame(coef(bestsubsets,min))
+colnames(coefs) <- c("Coefficient")
+coefs
+
+plot(regsummary$cp, xlab="Number of Variables", ylab="Cp", main="CP vs. No. of Variables")
+points(min, regsummary$cp[min], pch=20, col="red")
+
+minbic<-which.min(regsummary$bic)
+plot(regsummary$bic, xlab="Number of Variables", ylab="BIC", main="BIC vs. No. of Variables")
+points(minbic, regsummary$bic[minbic], pch=20, col="red")
+
+coefsbic<-data.frame(coef(bestsubsets,minbic))
+colnames(coefsbic) <- c("Coefficient")
+coefsbic
+```
+
+BIC and Mallows CP approximate external measures. Despite this, they may still overfit. I think that less variables has a lower chance of overfitting so I will choose the variables chosen by BIC. Lets use BIC coefficients
+
+```{r}
+Linear<-lm(Life.expectancy~Adult.Mortality + Adult.Mortality:infant.deaths + Adult.Mortality:Income.composition.of.resources + infant.deaths:Total.expenditure + Hepatitis.B:Polio + Polio:thinness.5.9.years + HIV.AIDS:Income.composition.of.resources ,data=lifedata)
+summary(Linear)
+plotres(Linear, which=3, caption = "Linear Baseline")
+data.frame(coef(Linear))
+```
+
+```{r}
+plotres(Penalty, which=3, main = "Linear Baseline")
+
+```
+
+
+
+Lets use test the use of penalty functions.
+
+```{r penalty}
+rownames(coefsbic)
+x=model.matrix(Life.expectancy~Adult.Mortality + Adult.Mortality:infant.deaths + Adult.Mortality:Income.composition.of.resources + infant.deaths:Total.expenditure + Hepatitis.B:Polio + Polio:thinness.5.9.years + HIV.AIDS:Income.composition.of.resources, data=lifedata)
+y=lifedata$Life.expectancy
+lambda=cv.glmnet(x,y,alpha=0.5)
+
+plot(lambda)
+title(main="Cross Validated MSE vs. log(lambda)")
+
+
+```
+Seems like a good value for log(Lambda) is about -1. Lets use this value and build the penalty model.
+
+
+
+```{r}
+
+DF <- data.frame(infant.deaths=lifedata$infant.deaths, HIV.AIDS=lifedata$HIV.AIDS, thinness.5.9.years=lifedata$thinness.5.9.years, Income.composition.of.resources=lifedata$Income.composition.of.resources, Adult.Mortality=lifedata$Adult.Mortality,Total.expenditure=lifedata$Total.expenditure, Hepatitis.B= lifedata$Hepatitis.B, Polio=lifedata$Polio, Life.expectancy=lifedata$Life.expectancy) ##Previously vars chosen by regsubsets
+
+f <- as.formula(Life.expectancy~Adult.Mortality + Adult.Mortality:infant.deaths + Adult.Mortality:Income.composition.of.resources + infant.deaths:Total.expenditure + Hepatitis.B:Polio + Polio:thinness.5.9.years + HIV.AIDS:Income.composition.of.resources)
+
+X <- model.matrix(f, DF)
+X <- data.matrix(x)
+
+Y <- data.matrix(DF["Life.expectancy"])
+
+Xnew=X[,2:8]
+
+Penalty<- glmnet(Xnew,Y, alpha=0.5, lambda=exp(-1))
+plotres(Penalty, which =3)
+```
+
+#Diagnostics
+
+```{r comparison}
+plotres(Penalty, which=3, main = "Linear Baseline")
+plotres(Linear, which=3, main = "Linear Penalised")
+```
+
+#Check for transformations of x vars
+
+```{r}
+partial.resid.plot(Linear) #press enter in console a few times after running
+```
+
+#Check link relationship
+
+```{r}
+plot(fitted(Linear),lifedata$Life.expectancy,pch=16, main = "Linear")
+plot(predict.glmnet(Penalty, newx=data.matrix(Xnew), type="response"),lifedata$Life.expectancy,pch=16, main = "Penalty")
+
+```
+
+Both residual plots look pretty good. The regular linear model seems to have a slight problem with heterskedacisity in that the lower fitted values seem a bit more spread out. The penalty function looks slightly better, with the exception of an outlier which seems to have influence and is changing the linearity of the residuals.
+
+
+Lets create a gamma model which has built-in hetereoskedacisity and see if this fixes it. 
+
+We need to re-do variable selection because of new family and link.
+
+```{r}
+sqrt = glm(Life.expectancy~.*., family=Gamma(link="sqrt"), data=lifedata)
+inv = glm(Life.expectancy~.*., family=Gamma(link="inverse"), data=lifedata)
+log = glm(Life.expectancy~.*., family=Gamma(link="log"), data=lifedata)
+idt = glm(Life.expectancy~.*., family=Gamma(link="identity"), data=lifedata)
+
+s0 <- glm(Life.expectancy ~ 1, family=Gamma(link="sqrt"), data=lifedata)
+i0 <- glm(Life.expectancy ~ 1, family=Gamma(link="inverse"), data=lifedata)
+l0 <- glm(Life.expectancy ~ 1, family=Gamma(link="log"), data=lifedata)
+id0 <- glm(Life.expectancy ~ 1, family=Gamma(link="identity"), data=lifedata)
+
+#Foward
+fwds <- step(s0,scope=list(lower=s0,upper=sqrt), direction="forward",k=2,trace=0)
+fwdi <- step(i0,scope=list(lower=i0,upper=inv), direction="forward",k=2,trace=0)
+fwdl <- step(l0,scope=list(lower=l0,upper=log), direction="forward",k=2,trace=0)
+fwdid <- step(id0,scope=list(lower=id0,upper=idt), direction="forward",k=2,trace=0)
+
+summary(fwds)$aic
+summary(fwdi)$aic
+summary(fwdl)$aic
+summary(fwdid)$aic
+
+#inverse has lowest AIC and also deviance. pick it
+coef(fwdi)
+
+inverseglm = glm(Life.expectancy ~ Income.composition.of.resources + HIV.AIDS + thinness.5.9.years + Polio + Total.expenditure + Adult.Mortality + Income.composition.of.resources:Total.expenditure + Income.composition.of.resources:Polio + Income.composition.of.resources:Adult.Mortality +  thinness.5.9.years:Adult.Mortality + Polio:Adult.Mortality + HIV.AIDS:Polio, family=Gamma(link="inverse"), data=lifedata) 
+
+
+```
+
+
+
+```{r glm comparison}
+
+anova(Linear, inverseglm)
+
+plotres(inverseglm, which=3, main="Inverse Link GLM") 
+plotres(Linear, which=3, main ="Linear Model")
+plotres(Penalty, which=3, main ="Penalty Model")
+```
+
+
+The inverse glm does not actually look that great. Maybe some fanning out towards lower fitted values/maybe an outlier. Either link is wrong, predictor links need to be changed or incorrect selection of predictors (I think the second is most likely). Lets investigate the partial residual plots.
+
+
+#Partial residual plots
+
+
+```{r partial resid}
+library(asbio)
+partial.resid.plot(inverseglm) #press enter in console a few times after running
+```
+
+Honestly they all look pretty good (linear and homeoskedastic). Therefore the x variables do not need to be transformed. Lets check another diagnostic.
+
+
+#Link diagnostics
+
+```{r y diag}
+plot(fitted(Linear),lifedata$Life.expectancy,pch=16)
+plot(fitted(inverseglm),lifedata$Life.expectancy,pch=16)
+```
+
+This shows some problems in the bottom left. It seems the choice for the link function is incorrect. Lets go back and try another link
+
+
+```{r}
+coef(fwds)
+
+sqrtglm = glm(Life.expectancy ~ Income.composition.of.resources + HIV.AIDS + thinness.5.9.years + Polio + Total.expenditure +Income.composition.of.resources:Total.expenditure, family=Gamma(link="sqrt"), data=lifedata) 
+```
+
+
+```{r}
+
+anova(Linear, sqrtglm)
+
+plotres(sqrtglm, which=3, main="Squareroot Link GLM") 
+plotres(Linear, which=3, main ="Linear Model")
+plotres(Penalty, which=3, main ="Penalty Model")
+```
+Doesnt look terrible.
+
+
+```{r partial resid}
+partial.resid.plot(sqrtglm) #press enter in console a few times after running
+```
+
+Maybe HIV.AIDS needs a log link.
+
+```{r}
+sqrtglm = glm(Life.expectancy ~ Income.composition.of.resources + log(HIV.AIDS) + thinness.5.9.years + Polio + Total.expenditure +Income.composition.of.resources:Total.expenditure, family=Gamma(link="sqrt"), data=lifedata) 
+```
+
+```{r}
+partial.resid.plot(sqrtglm) #press enter in console a few times after running
+```
+
+Looks quite good. Finally lets check the link function.
+
+```{r}
+plot(fitted(Linear),lifedata$Life.expectancy,pch=16)
+plot(fitted(inverseglm),lifedata$Life.expectancy,pch=16)
+```
+
+Fanning again. Incorrect link. It seems the correct link is no link at all
+
+```{r}
+coef(fwdid)
+
+identityglm = glm(Life.expectancy ~ Income.composition.of.resources + HIV.AIDS + thinness.5.9.years + Polio + Total.expenditure +Income.composition.of.resources:Total.expenditure, family=Gamma(link="identity"), data=lifedata) 
+```
+
+```{r}
+anova(Linear, identityglm)
+
+plotres(identityglm, which=3, main="Identity Link GLM") 
+plotres(Linear, which=3, main ="Linear Model")
+plotres(Penalty, which=3, main ="Penalty Model")
+```
+
+```{r}
+partial.resid.plot(identityglm) #press enter in console a few times after running
+```
+
+These all look good.
+
+```{r}
+plot(fitted(Linear),lifedata$Life.expectancy,pch=16)
+plot(fitted(identityglm),lifedata$Life.expectancy,pch=16)
+```
+
+No good again. Lets stick with the linear model
+
+
+Lets do some influence diagnostics
+
+```{r influence diag}
+
+dstar <- NA; CooksD <- NA;
+for(i in 1:nrow(lifedata)) {
+tmp <- lm(Life.expectancy~Adult.Mortality + Adult.Mortality:infant.deaths + Adult.Mortality:Income.composition.of.resources + infant.deaths:Total.expenditure + Hepatitis.B:Polio + Polio:thinness.5.9.years + HIV.AIDS:Income.composition.of.resources, data=lifedata,subset=ifelse((1:nrow(lifedata))==i,F,T))
+
+eta <- predict(tmp,data.frame(Income.composition.of.resources=lifedata$Income.composition.of.resources[i],HIV.AIDS=lifedata$HIV.AIDS[i], thinness.5.9.years=lifedata$thinness.5.9.years[i], Polio=lifedata$Polio[i], Total.expenditure=lifedata$Total.expenditure[i], Adult.Mortality=lifedata$Adult.Mortality[i], infant.deaths=lifedata$infant.deaths, Hepatitis.B=lifedata$Hepatitis.B))
+yhat <- eta
+Di <- 2*lifedata$Life.expectancy[i]*((yhat)-(lifedata$Life.expectancy[i])) - 2*(log(lifedata$Life.expectancy[i])-log(yhat))
+dstar[i] <- sqrt(Di[i])*ifelse(yhat[i]>lifedata$Life.expectancy[i],-1,1)
+CooksD[i] <- t(tmp$coef-Linear$coef)%*%solve(summary(Linear)$cov.unscaled)%*%
+(tmp$coef-Linear$coef)/(3*1)
+}
+plot(Linear$fitted.values,dstar,pch=16)
+barplot(CooksD)
+abline(h=4/31,lty=3)
+which(CooksD==max(CooksD))
+```
+
+
+
+```{r noinfluencemodel}
+uninfluenceddata = lifedata[c(-91),]
+
+nrow(uninfluenceddata)
+nrow(lifedata)
+
+
+noinfluence <-lm(Life.expectancy~Adult.Mortality + Adult.Mortality:infant.deaths + Adult.Mortality:Income.composition.of.resources + infant.deaths:Total.expenditure + Hepatitis.B:Polio + Polio:thinness.5.9.years + HIV.AIDS:Income.composition.of.resources ,data=uninfluenceddata)
+
+
+
+
+plot(fitted(noinfluence),(uninfluenceddata$Life.expectancy),pch=16) #Linear without influential data point
+plot(fitted(Linear),(lifedata$Life.expectancy),pch=16) #Linear model 
+
+
+```
+
+
+
+##Comparison
+```{r comparison}
+require(Metrics)
+
+
+mae1=mae(lifedata$Life.expectancy, predict(Linear, lifedata))
+mae2=mae(lifedata$Life.expectancy, 1/predict(inverseglm, lifedata))
+mae3=mae(lifedata$Life.expectancy, predict(sqrtglm, lifedata))
+mae4=mae(lifedata$Life.expectancy, as.vector(predict(pcafit, lifedatacomponents)))
+
+comparison= data.frame(InvGLM = c(AIC(inverseglm), BIC(inverseglm), mae2), SqrtGLM = c(AIC(sqrtglm), BIC(sqrtglm), mae3), Linear= c(AIC(Linear), BIC(Linear), mae1), PCA= c(AIC(pcafit), BIC(pcafit), mae3), row.names=c("AIC", "BIC", "MAE"))
+comparison
+
+plot(comparison)                      
+```
+
+
+```{r cars}
+library(mgcv)
+library(earth)
+library(gam)
+```
+
+##Variable selection for splines
+
+```{r}
+
+lm = lm(Life.expectancy~., data=lifedata)
+
+vars = step(lm, trace=0)
+coef(vars)
+```
+
+
+
+```{r}
+spline <-gam(Life.expectancy ~ s(Adult.Mortality) + s(Total.expenditure) + s(Diphtheria) + s(HIV.AIDS) + s(thinness.5.9.years) + s(Income.composition.of.resources), data = lifedata)
+plot(lifedata$Life.expectancy, fitted(spline))
+plot(lifedata$Life.expectancy, resid(spline))
+## This is without interaction gam cant have interaction. Choose the one u want.
+
+ggplot(lifedata, aes(lifedata$Life.expectancy, fitted(spline))) +geom_point() + geom_smooth(method = "gam")
+plot(spline, se=TRUE)
+```
+
+```{r}
+##THis is mars. It selects the interaction variables but doesn't make sense. We can however compare it to you interaction variables and see if they are similar.
+mars <- earth(Life.expectancy ~., data = lifedata, degree = 3)
+summary(mars)$coefficients
+evimp(mars)
+plot(lifedata$Life.expectancy, fitted(mars))
+plot(lifedata$Life.expectancy, resid(mars))
+```
+```{r}
+par(mfrow =c(1,4))
+plot(mars, se=TRUE)
+
+```
+
+
+
+```{r}
+gamR2 <- function(gam){
+R2 <- 1-((sum(residuals(gam)^2))/
+(sum((gam$y - mean(gam$y))^2)))
+R2adj <- 1- ((1 - R2) * (length(gam$y) - 1)/
+(length(gam$y) - length(gam$coefficients) - 1))
+a <- data.frame(R2, R2adj)
+return(a)
+}
+marsr = mars$rsq
+spliner = gamR2(spline)[1,2]
+linearr = summary(Linear)$r.squared
+mae1=mae(lifedata$Life.expectancy, predict(mars, lifedata))
+mae2=mae(lifedata$Life.expectancy, predict(spline, lifedata))
+mae3=mae(lifedata$Life.expectancy, predict(Linear, lifedata))
+
+
+comparison= data.frame(Earth = c(mae1, marsr), Smooth= c(mae2, spliner), Linear= c(mae3, linearr), row.names=c("MAE", "R.squared"))
+comparison
+
+#not neccesarily a better model (overfitting), need external measures.
+```
+
+
+
+```{r}
+coef(Linear)
+mars$coefficients
+```
+
+
+
+```{r}
+summary(Linear)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
