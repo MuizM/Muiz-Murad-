@@ -7,6 +7,8 @@
 
 <details>
 <summary>Multi Layer Perceptron Model (Python)</summary>
+Predicting which category newsgroup text belongs to.
+  
 <object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">View Report</a>.</p>
@@ -22,6 +24,8 @@
 
 <details>
 <summary>Convolutional Neural Network (Python)</summary>
+To predict which of 10 categories an image belongs to, the data is the classic CIFAR-10 dataset. 
+  
 <object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Two.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Two.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Two.pdf">View Report</a>.</p>
@@ -37,6 +41,9 @@
 
 <details>
 <summary>Recurrent Neural Network (Python)</summary>
+1. Conduct a literature review of at least 10 academic articles focusing on the use of RNNs in stock price prediction (use google scholar, and focus on the last 5 years)
+2. Build an RNN focused only on using past prices to predict future prices
+
 <object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Three.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Three.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Three.pdf">View Report</a>.</p>
@@ -112,6 +119,7 @@
 <details>
 <summary>World Health Data Project (R)</summary>
 The purpose of this report is to investigate these factors that affect life expectancy, quantify them and their effects, and ultimately allow for efficient maximization of life expectancy.
+  
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment-code.rmd" type="application/rmd" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment-code.rmd">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment-code.rmd">View Code</a>.</p>
