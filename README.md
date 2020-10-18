@@ -109,11 +109,9 @@
 </object>
 </details>
 
-**World Health Data Project**
-The purpose of this report is to investigate these factors that affect life expectancy, quantify them and their effects, and ultimately allow for efficient maximization of life expectancy.
-
 <details>
-<summary>Code (R)</summary>
+<summary>World Health Data Project (R)</summary>
+The purpose of this report is to investigate these factors that affect life expectancy, quantify them and their effects, and ultimately allow for efficient maximization of life expectancy.
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment-code.rmd" type="application/rmd" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment-code.rmd">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment-code.rmd">View Code</a>.</p>
@@ -122,7 +120,7 @@ The purpose of this report is to investigate these factors that affect life expe
                                                                                                 
 <object data="https://github.com/MuizM/MuizM/blob/main/StatsRegressionFinalReport.pdf" type="application/pdf" width="700px" height="700px">
     <embed src="https://github.com/MuizM/MuizM/blob/main/StatsRegressionFinalReport.pdf">
-        <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/StatsRegressionFinalReport.pdf">View Code</a>.</p>
+        <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/StatsRegressionFinalReport.pdf">View Report</a>.</p>
     </embed>
 </object>
 </details>
