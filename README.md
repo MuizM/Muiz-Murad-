@@ -4,5 +4,5 @@
 
 <details>
 <summary>Multi Layer Perceptron Model</summary>
-[embed]https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf/file.pdf[/embed]
+[embed]https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf/file.pdf [/embed]
 </details>
