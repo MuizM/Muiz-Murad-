@@ -2,6 +2,9 @@
   <img width="600" height="200" src="https://github.com/MuizM/MuizM/blob/main/MUIZ%20MURAD%20(1).png">
 </p>
 
+
+**Python**
+
 <details>
 <summary>Multi Layer Perceptron Model (Python)</summary>
 <object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf" type="application/pdf" width="700px" height="700px">
