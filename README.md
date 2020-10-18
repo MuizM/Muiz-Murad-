@@ -118,3 +118,23 @@
 </object>
 </details>
 
+
+**PowerBI**
+
+<details>
+<summary>Multi Layer Perceptron Model (Python)</summary>
+<object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">
+        <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">View Report</a>.</p>
+    </embed>
+</object>
+
+**Tableau**
+
+<details>
+<summary>Multi Layer Perceptron Model (Python)</summary>
+<object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">
+        <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">View Report</a>.</p>
+    </embed>
+</object>
