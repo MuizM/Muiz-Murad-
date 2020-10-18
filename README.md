@@ -4,5 +4,5 @@
 
 <details>
 <summary>Multi Layer Perceptron Model</summary>
-[embed]https://drive.google.com/file/d/1O-tAnCXVxxNCQgwG9pm8jMRfeX3L0h-x/view?usp=sharing[/embed]
+[embed]https://drive.google.com/file/d/1O-tAnCXVxxNCQgwG9pm8jMRfeX3L0h-x/view?usp=sharing [/embed]
 </details>
