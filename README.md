@@ -1,1 +1,1 @@
-<img src="https://github.com/MuizM/MuizM/blob/main/Muiz%20Murad.png" height="300px" width="250px">
+<img src="https://github.com/MuizM/MuizM/blob/main/MUIZ%20MURAD%20(1).png" height="200" width="600">
