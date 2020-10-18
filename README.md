@@ -8,8 +8,6 @@
 <details>
 <summary>Multi Layer Perceptron Model (Python)</summary>
 Predicting which category newsgroup text belongs to.
-  
-  
 <object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">View Report</a>.</p>
@@ -66,6 +64,7 @@ To predict which of 10 categories an image belongs to, the data is the classic C
 
 <details>
 <summary>Decision Tree(R)</summary>
+Your goal is to create a decision tree which can predict class membership of the “y” variable - Predicting the success of Bank Telemarketing using Decision Trees
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">
         <p>Report + Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Report + Code</a>.</p>
@@ -76,6 +75,8 @@ To predict which of 10 categories an image belongs to, the data is the classic C
      
 <details>
 <summary>Logistic Regression Models(R)</summary>
+Instead of just offering all customers the opportunity to respond to the offer, had to develop a model to target those who are most likely to respond incorporating an estimate of the probability that a given customer will respond.
+  
 <object data=https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf">View Report</a>.</p>
@@ -91,6 +92,8 @@ To predict which of 10 categories an image belongs to, the data is the classic C
 
 <details>
 <summary>KNN (R)</summary>
+Using KNN classification to determine the probability that a given customer will take up an offer through telemarketing. Deliverable was to create the best model to predict the probability a customer will take up the product. 
+  
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Report.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Report.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Report.pdf">View Report</a>.</p>
@@ -106,6 +109,8 @@ To predict which of 10 categories an image belongs to, the data is the classic C
 
 <details>
 <summary>Clustering (R)</summary>
+Finding natural groupings that exist within customer base. Deliverable was to find and explain any ONE natural grouping within the data - finding one way to group customers, and then explain that grouping in business terms.
+  
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Four_Report.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_Four_Report.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Four_Report.pdf">View Report</a>.</p>
@@ -139,6 +144,8 @@ The purpose of this report is to investigate these factors that affect life expe
 
 <details>
 <summary>Shiny Dashboard (R)</summary>
+Essentially this will be a dashboard which is built using Shiny. For the tree, logistic regression and KNN models, the app will build the models and for each model, it will show visualizations of the model and its fitness for purpose. The app would then allow a salesperson to input the specific details of the customer they are talking to, and receive a prediction from each of the underlying models. Based on this prediction, the salesperson could make targeted offers to the customer.
+  
 <object data="https://muizmuradds.shinyapps.io/Dashboard/" type="application/website" width="700px" height="700px">
     <embed src=https://muizmuradds.shinyapps.io/Dashboard/">
         <p>Dashboard: <a href="https://muizmuradds.shinyapps.io/Dashboard/">View Dashboard</a>.</p>
