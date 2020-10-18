@@ -54,14 +54,14 @@
 
 **R**
 
-<details>
+
 <summary>Decision Tree(R)</summary>
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">
         <p>Report + Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Report + Code</a>.</p>
     </embed>
  </object>
-<details>
+
                                                                                              
 <details>
 <summary>Logistic Regression Models(R)</summary>
