@@ -3,6 +3,6 @@
 </p>
 
 <details>
-<summary>"Click to expand"</summary>
+<summary>"Multi Layer Perceptron Model"</summary>
 this is hidden
 </details>
