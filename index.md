@@ -1,37 +1,124 @@
-## Welcome to GitHub Pages
+<p align="center">
+  <img width="600" height="200" src="https://github.com/MuizM/MuizM/blob/main/MUIZ%20MURAD%20(1).png">
+</p>
 
-You can use the [editor on GitHub](https://github.com/MuizM/MuizM/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+**Python**
 
-### Markdown
+<details>
+<summary>Multi Layer Perceptron Model (Python)</summary>
+<object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">
+        <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf">View Report</a>.</p>
+    </embed>
+</object>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Final.ipynb" type="application/ipynb" width="700px" height="700px">
+    <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Final.ipynb">
+        <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Final.ipynb">View Code</a>.</p>
+    </embed>
+</object>
+</details>
 
-```markdown
-Syntax highlighted code block
+<details>
+<summary>Convolutional Neural Network (Python)</summary>
+<object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Two.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Two.pdf">
+        <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Two.pdf">View Report</a>.</p>
+    </embed>
+</object>
 
-# Header 1
-## Header 2
-### Header 3
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Final_Submit.ipynb" type="application/ipynb" width="700px" height="700px">
+    <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Final_Submit.ipynb">
+        <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Final_Submit.ipynb">View Code</a>.</p>
+    </embed>
+</object>
+</details>
 
-- Bulleted
-- List
+<details>
+<summary>Recurrent Neural Network (Python)</summary>
+<object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Three.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Three.pdf">
+        <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Three.pdf">View Report</a>.</p>
+    </embed>
+</object>
 
-1. Numbered
-2. List
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Final.ipynb" type="application/ipynb" width="700px" height="700px">
+    <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Final.ipynb">
+        <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Final.ipynb">View Code</a>.</p>
+    </embed>
+</object>
+</details>
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+**R**
 
-### Jekyll Themes
+<details>
+<summary>Decision Tree(R)</summary>
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">
+        <p>Report + Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Report + Code</a>.</p>
+    </embed>
+ </object>
+</details>
+     
+     
+<details>
+<summary>Logistic Regression Models(R)</summary>
+<object data=https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf">
+        <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf">View Report</a>.</p>
+    </embed>
+</object>
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/MuizM/MuizM/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf" type="application/ipynb" width="700px" height="700px">
+    <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf">
+        <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf">View Code</a>.</p>
+    </embed>
+</object>
+</details>
 
-### Support or Contact
+<details>
+<summary>KNN (R)</summary>
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Report.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Report.pdf">
+        <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Report.pdf">View Report</a>.</p>
+    </embed>
+</object>
+                                                                                                 
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Code.pdf" width="700px" height="700px">
+    <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Code.pdf">
+        <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Three_Code.pdf">View Code</a>.</p>
+    </embed>
+</object>
+</details>
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+<details>
+<summary>Clustering (R)</summary>
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Four_Report.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_Four_Report.pdf">
+        <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Four_Report.pdf">View Report</a>.</p>
+    </embed>
+</object>
+                                                                                                
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Four_Code.pdf" width="700px" height="700px">
+    <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_Four_Code.pdf">
+        <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Four_Code.pdf">View Code</a>.</p>
+    </embed>
+</object>
+</details>
+
+<details>
+<summary>Shiny Dashboard (R)</summary>
+<object data="https://muizmuradds.shinyapps.io/Dashboard/" type="application/website" width="700px" height="700px">
+    <embed src=https://muizmuradds.shinyapps.io/Dashboard/">
+        <p>Dashboard: <a href="https://muizmuradds.shinyapps.io/Dashboard/">View Dashboard</a>.</p>
+    </embed>
+</object>
+</details>
+
+
+**PowerBI**
+                                                                                                     
+**Tableau**
