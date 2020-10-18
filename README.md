@@ -61,7 +61,7 @@
         <p>Report + Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Report + Code</a>.</p>
     </embed>
 </object>
-<details>
+
                                                                                              
 <details>
 <summary>Logistic Regression Models(R)</summary>
