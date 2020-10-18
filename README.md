@@ -36,7 +36,7 @@
 </details>
 
 <details>
-<summary>Renal Neural Network (Python)</summary>
+<summary>Recurrent Neural Network (Python)</summary>
 <object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Three.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Three.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Three.pdf">View Report</a>.</p>
