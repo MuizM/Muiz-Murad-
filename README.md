@@ -4,7 +4,5 @@
 
 <details>
 <summary>Multi Layer Perceptron Model</summary>
-<object data="https://drive.google.com/file/d/1O-tAnCXVxxNCQgwG9pm8jMRfeX3L0h-x/view?usp=sharing" type="application/pdf" width="100%"> 
-</object>
-  
+  [embed]https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_One.pdf[/embed]
 </details>
