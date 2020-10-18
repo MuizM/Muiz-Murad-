@@ -75,7 +75,7 @@
         <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf">View Code</a>.</p>
     </embed>
 </object>
-</details>
+
 
 <details>
 <summary>KNN (R)</summary>
