@@ -54,7 +54,7 @@
 
 **R**
 
-</details>
+<details>
 <summary>Decision Tree(R)</summary>
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">
@@ -77,7 +77,7 @@
         <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf">View Code</a>.</p>
     </embed>
 </object>
-<details>
+</details>
 
 <details>
 <summary>KNN (R)</summary>
@@ -116,5 +116,5 @@
         <p>Dashboard: <a href="https://muizmuradds.shinyapps.io/Dashboard/">View Dashboard</a>.</p>
     </embed>
 </object>
-<details>
+</details>
 
