@@ -75,11 +75,12 @@ Your goal is to create a decision tree which can predict class membership of the
 <summary>Logistic Regression Models(R)</summary>
 Instead of just offering all customers the opportunity to respond to the offer, had to develop a model to target those who are most likely to respond incorporating an estimate of the probability that a given customer will respond.
   
-<object data=https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf" type="application/pdf" width="700px" height="700px">
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf">View Report</a>.</p>
     </embed>
 </object>
+
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf" type="application/ipynb" width="700px" height="700px">
     <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf">
         <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf">View Code</a>.</p>
