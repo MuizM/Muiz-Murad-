@@ -24,8 +24,6 @@ Predicting which category newsgroup text belongs to.
 <details>
 <summary>Convolutional Neural Network (Python)</summary>
 To predict which of 10 categories an image belongs to, the data is the classic CIFAR-10 dataset. 
-  
-  
 <object data="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Two.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Two.pdf">
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Machine_Learning_Report_Two.pdf">View Report</a>.</p>
@@ -82,8 +80,6 @@ Instead of just offering all customers the opportunity to respond to the offer, 
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf">View Report</a>.</p>
     </embed>
 </object>
-</details>
-
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf" type="application/ipynb" width="700px" height="700px">
     <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf">
         <p>Code: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf">View Code</a>.</p>
