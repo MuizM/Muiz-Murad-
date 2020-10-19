@@ -82,6 +82,7 @@ Instead of just offering all customers the opportunity to respond to the offer, 
         <p>Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf">View Report</a>.</p>
     </embed>
 </object>
+</details>
 
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf" type="application/ipynb" width="700px" height="700px">
     <embed src="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Code.pdf">
