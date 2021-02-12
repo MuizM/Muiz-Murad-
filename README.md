@@ -56,7 +56,22 @@ To predict which of 10 categories an image belongs to, the data is the classic C
 </object>
 </details>
 
+<details>
+<summary>Financial Trading Algorithm (Python)</summary>
+To build an investment/trading system. 
+  
+<object data="https://github.com/MuizM/Muiz-Murad-/blob/main/Assignment_Two_Strategy(1).pdf" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/Muiz-Murad-/blob/main/Assignment_Two_Strategy(1).pdf">
+        <p>Trading Strategy: <a href="https://github.com/MuizM/Muiz-Murad-/blob/main/Assignment_Two_Strategy(1)">View Strategy</a>.</p>
+    </embed>
+</object>
 
+<object data="https://github.com/MuizM/Muiz-Murad-/blob/main/Assignment_Two_Report.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="https://github.com/MuizM/Muiz-Murad-/blob/main/Assignment_Two_Report.pdf">
+        <p>Results: <a href="https://github.com/MuizM/Muiz-Murad-/blob/main/Assignment_Two_Report.pdf">View Results</a>.</p>
+    </embed>
+</object>
+</details>
 
 **R**
 
