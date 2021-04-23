@@ -74,6 +74,18 @@ To build an investment/trading system.
 </details>
 
 **R**
+<details>
+<summary>AFL Data Investigation(R)</summary>
+This task is split into three parts requiring you to create and modify data, write functions, and summarise data.
+<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">
+        <p>Part One (Data Preparation): <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Code</a>.</p>
+        <p>Part Two (Functions): <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Code</a>.</p>
+        <p>Part Three (Reporting): <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Code</a>.</p>
+        <p>Summary Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Code</a>.</p>
+    </embed>
+ </object>
+</details>
 
 <details>
 <summary>Decision Tree(R)</summary>
