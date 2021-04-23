@@ -1,0 +1,147 @@
+---
+title: "Part_Three"
+author: "Muiz Murad"
+output: html_document
+---
+```{r load-packages, include=FALSE,message=FALSE}
+library(dplyr)
+library(magrittr)
+library(knitr)
+library(kableExtra)
+```
+
+```{r,include=FALSE,echo=FALSE}
+#Load Data
+players <- read.csv("players.csv") #read data in a csv format into R
+seasons <- read.csv("seasons.csv")
+match_stats <- read.csv("match_stats.csv")
+newseasons <- read.csv("D:\\AssignmentOne\\Data\\NewSeasons.csv")
+newplayers <- read.csv("D:\\AssignmentOne\\Data\\NewPlayers.csv")
+match_summary_stats <- read.csv("D:\\AssignmentOne\\Data\\Match_Summary_Stats.csv")
+```
+
+## Question One
+```{r,message=FALSE,echo=FALSE}
+#Question One 
+##the newseasons dataframe is grouped by the home team outcome either a win, loss or draw. The grouped data is then summarized based on the team winning, losing or drawing for all teams playing at home. the pct breakdown is defined as the total number of outcomes for a win, loss or draw divided by the total number of outcomes possible being the number of home games played. the case when statement produces a column to show which home team outcome was linked to a draw, loss or win
+outcome_totals <- newseasons %>% group_by(home_team_outcome) %>% summarize(OutcomeTotal = n()) %>% 
+  mutate(Pct_BreakDown =round(((OutcomeTotal / sum(OutcomeTotal)) * 100),2)) %>%
+  mutate(Outcome = case_when(home_team_outcome ==1 ~ "Win",
+                             home_team_outcome == 0 ~ "Draw",
+                             home_team_outcome == -1 ~ "Loss"))
+
+outcome_totals%>% kable(col.names = c("Home Team Outcome", "Total Outcomes","%","Outcome Type"),caption="<center><strong>Home Team Outcome Summary<center><strong>") %>% kable_styling(position = "center") %>%
+  kable_styling()
+```
+## Question Two
+```{r,message=FALSE,echo=FALSE}
+#Question Two 
+most_played<-match_stats %>% 
+group_by(pid) %>% #data is grouped by player id 
+  summarize(Total_Games = n()) %>% #data is summarized over all unique player id
+  arrange(desc(Total_Games)) #data is arranged highes to lowest for easier analysis 
+
+top_six_players<-top_n(most_played,6) #top_n where n is 6, shows the six highest values based on total games played per player 
+top_six_players%>% kable(col.names = c("Player ID","Total Games Played"),
+                         caption = "<center><strong>Top 6 Players Based On Total Games Played<center><strong>") %>%
+  kable_styling()
+```
+## Question Three
+```{r,message=FALSE,echo=FALSE}
+#Question Three 
+max_home_margin_win<-max(newseasons[newseasons$home_team_outcome == 1,]$margin) #maxmium value where the home team outcome was a 1 or otherwise known as a win 
+max_home_margin_lost<-max(newseasons[newseasons$home_team_outcome==-1,]$margin) #minimum value where the home team outcome was a 1 or otherwise known as a win 
+
+max_home_margin_win%>% kable(col.names = "Maximum Margin",caption = 
+                               "<center><strong>Winning Team Maximum Margin<center><strong>") %>%
+  kable_styling()
+
+max_home_margin_lost%>% kable(col.names = "Maximum Margin",
+                              caption = "<center><strong>Losing Team Maximum Margin<center><strong>") %>%
+  kable_styling()
+```
+## Question Four
+```{r,message=FALSE,echo=FALSE}
+#Question Four 
+highest_BMI_player<-newplayers[which.max(newplayers$BMI),c(3,4,5)] #maximum value for where the player's BMI was seen to be the highest and before that the the first and last name are shown for that particular BMI value 
+
+highest_BMI_player%>% kable(col.names = c("First Name","Last Name","BMI"),
+                            caption = "<center><strong>Player With Highest BMI<center><strong>",row.names = FALSE) %>%
+  kable_styling()
+
+lowest_BMI_player<-newplayers[which.min(newplayers$BMI),c(3,4,5)]#maximum value for where the player's BMI was seen to be the lowest and before that the the first and last name are shown for that particular BMI value 
+lowest_BMI_player%>% kable(col.names = c("First Name","Last Name","BMI"),
+                           caption = "<center><strong>Player With Lowest BMI<center><strong>",row.names = FALSE) %>%
+  kable_styling()
+```
+## Question Five
+```{r,message=FALSE,echo=FALSE,warning = FALSE}
+#Question Five 
+newseasons_2<-newseasons[!(newseasons$margin == 0),] #remove all data for a game where a draw occured based on condition margin = 0 
+
+outcome_totals_1<-  newseasons_2  %>% 
+  filter(win_tid == tid1) %>% #filter data for only team id one 
+  group_by(team_id=tid1) %>% #group data by team id one and define the column as team_id
+  summarize(total_won = n()) #summarize and show total number of games won by team id one teams 
+
+outcome_totals_2 <- newseasons_2  %>% 
+  filter(win_tid == tid2) %>% #filter data for only team id two 
+  group_by(team_id=tid2) %>% #group data by team id two and define the column as team_id
+  summarize(total_won = n()) #summarize and show total number of games won by team id two teams 
+
+total_games_1 <- newseasons_2 %>% 
+  group_by(team_id=tid1)%>% #group data whereby the team_id is team id one 
+   summarize(total_played = n()) #make column to show total number of games played by each team id one team 
+
+total_games_2 <- newseasons_2 %>% 
+  group_by(team_id=tid2)%>% #group data whereby the team_id is team id two  
+   summarize(total_played = n()) #make column to show total number of games played by each team id two team 
+
+Total_Games_Won = outcome_totals_1 %>% full_join(outcome_totals_2) %>% 
+  group_by(team_id) %>% summarise_all(funs(sum(.,na.rm = T))) #join the total win outcome data for team id one and two teams to make one dataframe 
+
+Total_Games_Played =total_games_1 %>% full_join(total_games_2) %>% 
+  group_by(team_id) %>% summarise_all(funs(sum(.,na.rm = T))) #join the total games played data for team id one and two teams to make one dataframe 
+
+Total_Games_Final = Total_Games_Won  %>% full_join(Total_Games_Played) %>% 
+  group_by(team_id) %>% summarise_all(funs(sum(.,na.rm = T))) #join the total games played data for team id one and two teams to the total win outcomes dataframe to have dataframe containing team id and number of games played and won 
+
+Total_Games_Final$pct_win_ratio <- round((Total_Games_Final$total_won / Total_Games_Final$total_played) * 100,2) #make percentage of win column by dividing total number of games won by the total number of games player multiplied by 100 and rounded to two decimal places 
+
+Total_Games_Final %>% kable(caption = "<center><strong>Total Team Win Summary<center><strong>") %>%
+  kable_styling()
+```
+
+## Question Six
+```{r,message=FALSE,echo=FALSE}
+#Question Six
+most_common_names<-tail(names(sort(table(newplayers$first.name))), 3) #this function will run through the 
+most_common_names %>% kable(col.names = "First Name",caption = 
+                              "<center><strong>Top 3 Most Common Player First Names<center><strong>") %>%
+  kable_styling()
+```
+
+## Question Seven
+```{r,message=FALSE,echo=FALSE}
+#Question Seven 
+
+#Total Kicks Per Player
+total_kicks_player<-match_stats %>%
+    group_by(pid) %>% #group data by player id 
+    transmute(Total_Kicks=sum(Kicks)) #make column for total kicks based on sum of kicks for each player id 
+
+max_player_kicks<-total_kicks_player[which.max(total_kicks_player$Total_Kicks),c(1:2)]
+max_player_kicks%>% kable(col.names =c("Player ID","Total Kicks"),
+                          caption = "<center><strong>Player With Most Kicks<center><strong>") %>%
+  kable_styling() #find row for maximum number of kicks for a player and show their player id 
+
+#Total Kicks Per Team
+total_kicks_team<-match_stats %>%
+    group_by(tid) %>% #group data by team id  
+    transmute(Total_Kicks=sum(Kicks))#make column for total kicks based on sum of kicks for each team 
+
+max_total_kicks<-total_kicks_team[which.max(total_kicks_team$Total_Kicks),c(1:2)]
+max_total_kicks%>% kable(col.names = c("Team ID","Total Kicks"),
+                         caption = "<center><strong>Team With Most Kicks<center><strong>") %>%
+  kable_styling()#find row for maximum number of kicks for a team and show their team id 
+```
