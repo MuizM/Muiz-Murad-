@@ -98,7 +98,7 @@ Your goal is to create a decision tree which can predict class membership of the
      
      
 <details>
-<summary>Logistic Regression Models(R)</summary>
+<summary>Logistic Regression Models (R)</summary>
 Instead of just offering all customers the opportunity to respond to the offer, had to develop a model to target those who are most likely to respond incorporating an estimate of the probability that a given customer will respond.
   
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment_Two_Report.pdf" type="application/pdf" width="700px" height="700px">
