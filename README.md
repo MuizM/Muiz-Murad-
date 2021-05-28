@@ -75,20 +75,19 @@ To build an investment/trading system.
 
 **R**
 <details>
-<summary>AFL Data Investigation(R)</summary>
+<summary>AFL Data Investigation (R)</summary>
 This task is split into three parts requiring you to create and modify data, write functions, and summarise data.
-<object data="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">
-        <p>Part One (Data Preparation): <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Code</a>.</p>
-        <p>Part Two (Functions): <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Code</a>.</p>
-        <p>Part Three (Reporting): <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Code</a>.</p>
-        <p>Summary Report: <a href="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">View Code</a>.</p>
+<object data="https://github.com/MuizM/Muiz-Murad-/blob/main/Part_One.R" type="application/pdf" width="700px" height="700px">
+    <embed src=https://github.com/MuizM/Muiz-Murad-/blob/main/Part_One.R">
+        <p>Part One (Data Preparation): <a href="https://github.com/MuizM/Muiz-Murad-/blob/main/Part_One.R">View Code</a>.</p>
+        <p>Part Two (Functions): <a href="https://github.com/MuizM/Muiz-Murad-/blob/main/Player%20Function%20and%20Plotting%20Code.R">View Code</a>.</p>
+        <p>Part Three (Reporting): <a href="https://github.com/MuizM/Muiz-Murad-/blob/main/Part_Three_Code.Rmd">View Code</a>.</p>
     </embed>
  </object>
 </details>
 
 <details>
-<summary>Decision Tree(R)</summary>
+<summary>Decision Tree (R)</summary>
 Your goal is to create a decision tree which can predict class membership of the “y” variable - Predicting the success of Bank Telemarketing using Decision Trees
 <object data="https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf" type="application/pdf" width="700px" height="700px">
     <embed src=https://github.com/MuizM/MuizM/blob/main/Assignment_One_Code.pdf">
